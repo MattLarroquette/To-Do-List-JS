@@ -75,6 +75,8 @@ var listController = (function() {
 
       //push it into our data structure
       dates[when].push(newItem); //all of these new items will be added to their corresponding array in the data object and inside the data object in the allItems object
+      //console.log(newItem);
+
       //return the new element
       return newItem;
     },
@@ -87,6 +89,12 @@ var listController = (function() {
 }());
 
 var UIController = (function(lc) {
+  function nodeListForEach(list, callback){
+    for(var i = 0; i < list.length; i++){
+        callback(list[i], i);
+    }
+  };
+
   return{
     displayDate: function(){
       var currentDate = new Date();
@@ -171,6 +179,26 @@ var UIController = (function(lc) {
       }
 
       //console.log(count);
+    },
+
+    clearInputFields: function(){
+      var fields = document.querySelectorAll(
+        '.add_title' + ',' +
+        '.add_description'
+      );
+      nodeListForEach(fields, function(cur){
+        cur.value = "";
+      });
+    },
+
+    selectToDefault: function(){
+      var selects = document.querySelectorAll(
+        '.add_urgency' + ',' +
+        '.add_when'
+      );
+      nodeListForEach(selects, function(cur){
+        cur.selectedIndex = 0;
+      })
     }
   }
 
@@ -184,11 +212,7 @@ var appController = (function(listCtrl, UICtrl) {
 
     window.addEventListener('click',windowCloseModal);
 
-    document.querySelector('.add_input_btn').addEventListener('click', function(){
-      addListItem();
-      closeModal();
-      //clear input fields
-    });
+    document.querySelector('.add_input_btn').addEventListener('click', addListItem);
   }
 
   function openModal(){
@@ -217,6 +241,12 @@ var appController = (function(listCtrl, UICtrl) {
       UICtrl.addItemToScreen(newItem, input.when);
 
       UICtrl.addCountToScreen(input.when);
+
+      closeModal();
+
+      UICtrl.clearInputFields();
+      
+      UICtrl.selectToDefault();
     }
   }
 
