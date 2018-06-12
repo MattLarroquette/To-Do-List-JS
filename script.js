@@ -41,14 +41,12 @@ var listController = (function() {
     this.when = when
   }
 
-  var data = {
-    allDates: {
+  var dates = {
       Today: [],
       Tomorrow: [],
       ThisWeek: [],
       NextWeek: [],
       Future: []
-    }
   }
 
   return{
@@ -56,8 +54,8 @@ var listController = (function() {
       var newItem, itemId;
 
       //create new ID
-      if(data.allDates[when].length > 0){
-        itemId = data.allDates[when][data.allDates[when].length - 1].id + 1;
+      if(dates[when].length > 0){
+        itemId = dates[when][dates[when].length - 1].id + 1;
       } else{
         itemId = 0;
       }
@@ -76,13 +74,13 @@ var listController = (function() {
       }
 
       //push it into our data structure
-      data.allDates[when].push(newItem); //all of these new items will be added to their corresponding array in the data object and inside the data object in the allItems object
+      dates[when].push(newItem); //all of these new items will be added to their corresponding array in the data object and inside the data object in the allItems object
       //return the new element
       return newItem;
     },
 
     getCount: function(when){
-      return data.allDates[when].length;
+      return dates[when].length;
     }
   }
 
