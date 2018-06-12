@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type=" text/css" rel="stylesheet" href='style.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <div class="header">
+      <p id="page_title">To-Do List as of <span class="current_date">%date%</span></p>
+      <hr id="page_title_hr">
+    </div>
+    <div class="content">
+      <div class="today_container">
+        <p class="when_title">Today <span class="num_when_today">(0)</span></p>
+        <hr class="when_hr">
+        <div class="today_list">
+          <!--
+          <div class="list_item" id="today_0">
+            <div class="list_item_urgency">
+              <p>%urgency%</p>
+            </div>
+            <div class="list_item_info">
+              <p class="list_item_title">%title%</p>
+              <p class="list_item_desc">%description%</p>
+            </div>
+          </div>
+
+          <div class="list_item" id="today_1">
+            <div class="list_item_urgency">
+              <p>%urgency%</p>
+            </div>
+            <div class="list_item_info">
+              <p class="list_item_title">%title%</p>
+              <p class="list_item_desc">%description%</p>
+            </div>
+          </div>
+        -->
+
+        </div>
+      </div>
+
+      <div class="tomorrow_container">
+        <p class="when_title">Tomorrow <span class="num_when_tom">(0)</span></p>
+        <hr class="when_hr">
+        <div class="tomorrow_list">
+
+          <!--
+          <div class="list_item" id="tomorrow_0">
+            <div class="list_item_urgency">
+              <p>%urgency%</p>
+            </div>
+            <div class="list_item_info">
+              <p class="list_item_title">%title%</p>
+              <p class="list_item_desc">%description%</p>
+            </div>
+          </div>
+        -->
+
+        </div>
+
+      </div>
+
+      <div class="thisWeek_container">
+        <p class="when_title">Later This Week <span class="num_when_thisWeek">(0)</span></p>
+        <hr class="when_hr">
+        <div class="thisWeek_list">
+
+          <!--
+          <div class="list_item" id="thisWeek_0">
+            <div class="list_item_urgency">
+              <p>%urgency%</p>
+            </div>
+            <div class="list_item_info">
+              <p class="list_item_title">%title%</p>
+              <p class="list_item_desc">%description%</p>
+            </div>
+          </div>
+        -->
+
+        </div>
+      </div>
+
+      <div class="nextWeek_container">
+        <p class="when_title">Next Week <span class="num_when_nextWeek">(0)</span></p>
+        <hr class="when_hr">
+        <div class="nextWeek_list">
+
+          <!--
+          <div class="list_item" id="nextWeek_0">
+            <div class="list_item_urgency">
+              <p>%urgency%</p>
+            </div>
+            <div class="list_item_info">
+              <p class="list_item_title">%title%</p>
+              <p class="list_item_desc">%description%</p>
+            </div>
+          </div>
+        -->
+
+        </div>
+      </div>
+
+      <div class="future_container">
+        <p class="when_title">In The Future <span class="num_when_future">(0)</span></p>
+        <hr class="when_hr">
+        <div class="future_list">
+
+          <!--
+          <div class="list_item" id="future_0">
+            <div class="list_item_urgency">
+              <p>%urgency%</p>
+            </div>
+            <div class="list_item_info">
+              <p class="list_item_title">%title%</p>
+              <p class="list_item_desc">%description%</p>
+            </div>
+          </div>
+        -->
+
+        </div>
+      </div>
+
+    </div>
+
+    <div id="modal-container">
+      <a class="add_btn"><i class="fa fa-plus add_icon"></i></a>
+
+      <div id="add_btn_modal" class="modal">
+        <div class="modal-content">
+          <span class="close_btn">&times;</span>
+          <div class="add_container">
+            <select class="add_urgency">
+                <option value="High" selected>High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <input type="text" class="add_title" placeholder="Title">
+            <input type="text" class="add_description" placeholder="Description">
+            <select class="add_when">
+                <option value="Today" selected>Today</option>
+                <option value="Tomorrow">Tomorrow</option>
+                <option value="ThisWeek">Later This Week</option>
+                <option value="NextWeek">Next Week</option>
+                <option value="Future">Some date in the future</option>
+            </select>
+            <button class="add_input_btn">Add To List</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
