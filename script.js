@@ -118,19 +118,19 @@ var UIController = (function(lc) {
       //create html string with placeholder text
       if(when === 'Today'){
         element = '.today_list';
-        html = '<div class="list_item" id="today_%id%"><div class="list_item_urgency"><p>%urgency%</p></div><div class="list_item_info"><p class="list_item_title">%title%</p><p class="list_item_desc">%description%</p></div></div>';
+        html = '<div class="list_item" id="today_%id%"><div class="list_item_urgency %urgClass%"><p>%urgency%</p></div><div class="list_item_info"><p class="list_item_title">%title%</p><p class="list_item_desc">%description%</p></div></div>';
       }else if(when === 'Tomorrow'){
         element = '.tomorrow_list';
-        html = '<div class="list_item" id="tomorrow_%id%"><div class="list_item_urgency"><p>%urgency%</p></div><div class="list_item_info"><p class="list_item_title">%title%</p><p class="list_item_desc">%description%</p></div></div>';
+        html = '<div class="list_item" id="tomorrow_%id%"><div class="list_item_urgency %urgClass%"><p>%urgency%</p></div><div class="list_item_info"><p class="list_item_title">%title%</p><p class="list_item_desc">%description%</p></div></div>';
       }else if(when === 'ThisWeek'){
         element = '.thisWeek_list';
-        html = '<div class="list_item" id="thisWeek_%id%"><div class="list_item_urgency"><p>%urgency%</p></div><div class="list_item_info"><p class="list_item_title">%title%</p><p class="list_item_desc">%description%</p></div></div>';
+        html = '<div class="list_item" id="thisWeek_%id%"><div class="list_item_urgency %urgClass%"><p>%urgency%</p></div><div class="list_item_info"><p class="list_item_title">%title%</p><p class="list_item_desc">%description%</p></div></div>';
       }else if(when === 'NextWeek'){
         element = '.nextWeek_list';
-        html = '<div class="list_item" id="nextweek_%id%"><div class="list_item_urgency"><p>%urgency%</p></div><div class="list_item_info"><p class="list_item_title">%title%</p><p class="list_item_desc">%description%</p></div></div>';
+        html = '<div class="list_item" id="nextweek_%id%"><div class="list_item_urgency %urgClass%"><p>%urgency%</p></div><div class="list_item_info"><p class="list_item_title">%title%</p><p class="list_item_desc">%description%</p></div></div>';
       }else{
         element = '.future_list';
-        html = '<div class="list_item" id="Future_%id%"><div class="list_item_urgency"><p>%urgency%</p></div><div class="list_item_info"><p class="list_item_title">%title%</p><p class="list_item_desc">%description%</p></div></div>';
+        html = '<div class="list_item" id="Future_%id%"><div class="list_item_urgency %urgClass%"><p>%urgency%</p></div><div class="list_item_info"><p class="list_item_title">%title%</p><p class="list_item_desc">%description%</p></div></div>';
       }
 
       //replace placeholder text with actual data
@@ -138,6 +138,7 @@ var UIController = (function(lc) {
       newHtml = newHtml.replace('%urgency%',item.urgency);
       newHtml = newHtml.replace('%title%',item.title);
       newHtml = newHtml.replace('%description%',item.description);
+      newHtml = newHtml.replace('%urgClass%',item.urgency);
 
 
       //console.log(newHtml);
@@ -198,8 +199,8 @@ var UIController = (function(lc) {
       );
       nodeListForEach(selects, function(cur){
         cur.selectedIndex = 0;
-      })
-    }
+      });
+    },
   }
 
 }(listController));
@@ -213,6 +214,12 @@ var appController = (function(listCtrl, UICtrl) {
     window.addEventListener('click',windowCloseModal);
 
     document.querySelector('.add_input_btn').addEventListener('click', addListItem);
+
+    document.addEventListener('keypress', function(event){ //When enter is clicked
+      if(event.keyCode === 13 || event.which === 13){ //some old browsers use which for when a key is pressed
+        addListItem();
+      }
+    });
   }
 
   function openModal(){
@@ -245,7 +252,7 @@ var appController = (function(listCtrl, UICtrl) {
       closeModal();
 
       UICtrl.clearInputFields();
-      
+
       UICtrl.selectToDefault();
     }
   }

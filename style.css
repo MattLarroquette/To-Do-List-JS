@@ -34,7 +34,7 @@ label{
   font-size: 20px;
   font-weight: 200;
   margin-left:20px;
-  margin-top: 40px
+  margin-top: 40px;
 }
 
 .when_hr{
@@ -43,7 +43,19 @@ label{
   margin-left: 20px;
 }
 
-.list_item{
+.High{
+  color: red;
+}
+
+.Medium{
+  color: #DFDF17;
+}
+
+.Low{
+  color: green;
+}
+
+.list_item {
   width:80%;
   height:40%;
   border: 1px solid black;
@@ -54,10 +66,9 @@ label{
 .list_item_urgency {
   float: left;
   width: 110px;
-  line-height: 2.85; /*keep as is*/
+  line-height: 2.38;/*keep as is*/
   text-align: center;
-  color: black;
-  font-size: 18px;
+  font-size: 20px;
   border-right: 1px solid black;
 }
 
